@@ -1,63 +1,81 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+import CaptureButton from "./capture-button";
+import Container from "./container";
+
+const Video = styled.video`
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+`;
+
+const Canvas = styled.canvas`
+    display: none;
+    height: 100vh;
+    width: 100vw;
+`;
 
 class Camera extends Component {
 
-     
+    stream;
 
-    canvas = React.createRef();
-    //image = React.createRef();
-    video = React.createRef();
+    canvasRef = React.createRef();
+    videoRef = React.createRef();
+
+    componentDidMount() {
+        this.setupCamera();
+    }
+
+    componentWillUnmount() {
+        this.takedownCamera();
+    }
 
     setupCamera = () => {
         const constraints = { video: true };
-        const setVideoSource = stream => {
-            //this.video.current.src = window.URL.createObjectURL(stream);
-            this.video.current.srcObject = stream;
-            this.video.current.play();
+        const saveStream = stream => this.stream = stream;
+        const setVideoSource = () => {
+            this.videoRef.current.srcObject = this.stream;
+            this.videoRef.current.play();
         };
 
         navigator.mediaDevices.getUserMedia(constraints)
+            .then(saveStream)
             .then(setVideoSource)
             .catch(error => console.error(error));
     }
 
-    takePhoto = () => {
-        const { onImageCapture } = this.props;
-
-        const width = this.video.current.videoWidth;
-        const height = this.video.current.videoHeight;
-
-        const context = this.canvas.current.getContext("2d");
-
-        this.canvas.current.width = width;
-        this.canvas.current.height = height;
-
-        context.drawImage(this.video.current, 0, 0, width, height);
-
-        const imageDataURL = this.canvas.current.toDataURL('image/png');
-
-        onImageCapture(imageDataURL);
-
-        // Set the dataURL as source of an image element, showing the captured photo.
-        //this.image.current.setAttribute('src', imageDataURL); 
-    
+    takedownCamera = () => {
+        if(this.stream) {
+            const [track] = this.stream.getTracks(); 
+            track.stop();
+        }
     }
 
-    /*pause = () => {
-        this.video.current.pause();
-    }*/
+    takePhoto = () => {
+        const { onImageCapture } = this.props;
+        const { videoHeight: height, videoWidth: width } = this.videoRef.current;
+        
+        const context = this.canvasRef.current.getContext("2d");
+
+        this.canvasRef.current.width = width;
+        this.canvasRef.current.height = height;
+
+        context.drawImage(this.videoRef.current, 0, 0, width, height);
+
+        const imageDataURL = this.canvasRef.current.toDataURL("image/png");
+
+        onImageCapture(imageDataURL);
+    }
 
     render() {
        return (
-           <div>
-               <button onClick={this.setupCamera}>Start Camera</button>
-               <button onClick={this.takePhoto}>Take Photo</button>
-               {/*<button onClick={this.pause}>Pause</button>*/}
-               {/*<img ref={this.image}></img>*/}
-               <video ref={this.video}></video>
-               <canvas ref={this.canvas} style={{display:"none"}}></canvas>
-           </div>  
+           <Container>
+               <CaptureButton onClick={this.takePhoto}>Take Photo</CaptureButton>
+               <Video ref={this.videoRef}></Video>
+               <Canvas ref={this.canvasRef}></Canvas>
+           </Container>  
        );
    }
 }

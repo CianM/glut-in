@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Camera from "../components/camera";
+import Container from "../components/container";
 import Result from "../components/result";
 
 class CameraContainer extends Component {
@@ -15,10 +16,10 @@ class CameraContainer extends Component {
         const { imageData } = this.state;
         console.log({imageData})
         return (
-            <div>
+            <Container>
                 { !imageData && (<Camera onImageCapture={this.setImageData} />) }
                 { imageData && (<Result background={imageData} />) }
-            </div>
+            </Container>
         );
     }
 }
