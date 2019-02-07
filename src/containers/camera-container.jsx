@@ -18,7 +18,7 @@ class CameraContainer extends Component {
         return (
             <Container>
                 { !imageData && (<Camera onImageCapture={this.setImageData} />) }
-                { imageData && (<Result background={imageData} />) }
+                { imageData && (<Result image={imageData} />) }
             </Container>
         );
     }
