@@ -1,13 +1,29 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const Container = styled.div``;
+import { glutenImageData, glutenFreeImageData } from "../images/test-data";
+
+const Container = styled.div`
+    padding: 1rem;
+`;
 
 const Title = styled.h1``;
 
-const ItemContainer = styled.div``;
+const ItemContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    align-items: stretch;
+`;
 
-const Item = styled.div``;
+const Item = styled.img`
+    width: 100%;
+    max-height: 5rem;
+    object-fit: cover;
+    cursor: pointer;
+`;
 
 class TestData extends Component {
     render() {
@@ -15,15 +31,11 @@ class TestData extends Component {
             <Container>
                 <Title>Gluten</Title>
                 <ItemContainer>
-                    <Item>Gluten 1</Item>
-                    <Item>Gluten 2</Item>
-                    <Item>Gluten 3</Item>
+                    { glutenImageData.map((image, index) => (<Item key={index} src={image} />)) }
                 </ItemContainer>
                 <Title>Gluten-Free</Title>
                 <ItemContainer>
-                    <Item>Gluten-Free 1</Item>
-                    <Item>Gluten-Free 2</Item>
-                    <Item>Gluten-Free 3</Item>
+                    { glutenFreeImageData.map((image, index) => (<Item key={index} src={image} />)) }
                 </ItemContainer>
             </Container>
         );
