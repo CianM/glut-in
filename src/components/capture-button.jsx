@@ -11,7 +11,7 @@ const CaptureButton = styled.button`
 	border-radius: 50%;
 	text-align: center;
 	cursor: pointer;
-	z-index: 1;
+	z-index: var(--z-index-capture-button);
 `;
 
 export default CaptureButton;

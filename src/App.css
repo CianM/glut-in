@@ -30,3 +30,11 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --color-white: #FFFFFF;
+
+  --z-index-capture-button: 1;
+  --z-index-menu-button: 1;
+  --z-index-menu: 2;
+}
