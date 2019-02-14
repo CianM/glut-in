@@ -5,6 +5,8 @@ import onClickOutside from "react-onclickoutside";
 
 import CloseIcon from "../images/close.svg";
 
+import { ROUTES } from "../utils/constants";
+
 const MenuContainer = styled.div`
     display: ${({ visible }) => visible ? "flex" : "none"};
     flex-flow: column nowrap;
@@ -49,6 +51,8 @@ class Menu extends Component {
 
     handleClickOutside = event => this.props.closeFn();
 
+    navigateToTestData = () => window.history.pushState({}, "", ROUTES.TEST);
+
     render() {
         const { closeFn, open } = this.props;
 
@@ -57,9 +61,7 @@ class Menu extends Component {
                 <Header>
                     <Header.CloseButton src={CloseIcon} alt="Close" onClick={closeFn} />
                 </Header>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-                <Item>Item 3</Item>
+                <Item onClick={this.navigateToTestData}>Test Data</Item>
             </MenuContainer>
         );
     }
