@@ -2,7 +2,6 @@ import Tesseract from 'tesseract.js'
 
 class RecognitionService {
 
-	_job;
 	_tesseract;
 
 	constructor() {
@@ -10,7 +9,7 @@ class RecognitionService {
 	}
 
 	startDetection(image) {
-		this._job = this._tesseract.recognize(image);
+		return this._tesseract.recognize(image);
 	}
 
 	_configureLibrary = () => {
