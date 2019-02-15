@@ -17,7 +17,7 @@ class RecognitionService {
 	detect(labelText) {
 		const text = labelText.toLowerCase();
 		const { terms } = blacklist;
-
+		
 		const inText = term => text.includes(term);
 		const checkTextForTerms = (resolve, reject) => terms.some(inText) ? resolve() : reject();
 		
@@ -29,11 +29,14 @@ class RecognitionService {
 		this._tesseract = Tesseract.create(config);
 	}
 
-	_getConfig = () => ({
-		workerPath: `${window.location.origin}/tesseract/worker.js`,
-		langPath: `${window.location.origin}/tesseract/lang/`,
-		corePath: `${window.location.origin}/tesseract/core.js`,
-	});
+	_getConfig = () => {
+		const path = `${window.location.origin}${process.env.PUBLIC_URL}`;
+		return {
+			workerPath: `${path}/tesseract/worker.js`,
+			langPath: `${path}/tesseract/lang/`,
+			corePath: `${path}/tesseract/core.js`,
+		}
+	};
 
 }
 
