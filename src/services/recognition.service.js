@@ -19,9 +19,9 @@ class RecognitionService {
 	}
 
 	_getConfig = () => ({
-		workerPath: `${window.location.href}tesseract/worker.js`,
-		langPath: `${window.location.href}tesseract/lang/`,
-		corePath: `${window.location.href}tesseract/core.js`,
+		workerPath: `${window.location.origin}/tesseract/worker.js`,
+		langPath: `${window.location.origin}/tesseract/lang/`,
+		corePath: `${window.location.origin}/tesseract/core.js`,
 	});
 
 }

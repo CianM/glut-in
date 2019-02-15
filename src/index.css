@@ -1,3 +1,11 @@
+:root {
+  --color-white: #FFFFFF;
+
+  --z-index-capture-button: 1;
+  --z-index-menu-button: 1;
+  --z-index-menu: 2;
+}
+
 body {
   margin: 0;
   padding: 0;

@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import { BrowserRouter } from 'react-router-dom';
 
-import CameraContainer from './containers/camera-container';
+import Router from "./routers";
 
 class App extends Component {
   render() {
     return (
-      <CameraContainer />
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     );
   }
 }

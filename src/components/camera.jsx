@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 import CaptureButton from "./capture-button";
 import Container from "./container";
+
+import { ROUTES } from "../utils/constants";
 
 const Video = styled.video`
     height: 100vh;
@@ -54,7 +57,8 @@ class Camera extends Component {
     }
 
     takePhoto = () => {
-        const { onImageCapture } = this.props;
+        const { history: { push } } = this.props;
+
         const { videoHeight: height, videoWidth: width } = this.videoRef.current;
         
         const context = this.canvasRef.current.getContext("2d");
@@ -66,7 +70,8 @@ class Camera extends Component {
 
         const imageDataURL = this.canvasRef.current.toDataURL("image/png");
 
-        onImageCapture(imageDataURL);
+        const data = { image: imageDataURL };
+        push(ROUTES.RESULTS, data);
     }
 
     render() {
@@ -81,7 +86,9 @@ class Camera extends Component {
 }
 
 Camera.propTypes = {
-    onImageCapture: PropTypes.func.isRequired
+    history: PropTypes.shape({
+        push: PropTypes.func
+    })
 };
 
-export default Camera;
+export default withRouter(Camera);

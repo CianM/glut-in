@@ -2,8 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import onClickOutside from "react-onclickoutside";
+import { Link } from "react-router-dom";
 
 import CloseIcon from "../images/close.svg";
+
+import { ROUTES } from "../utils/constants";
 
 const MenuContainer = styled.div`
     display: ${({ visible }) => visible ? "flex" : "none"};
@@ -38,7 +41,7 @@ Header.CloseButton = styled.img`
     width: 2rem;
 `;
 
-const Item = styled.div`
+const Item = styled(Link)`
     display: flex;
     align-items: center;
     height: 3rem;
@@ -57,9 +60,7 @@ class Menu extends Component {
                 <Header>
                     <Header.CloseButton src={CloseIcon} alt="Close" onClick={closeFn} />
                 </Header>
-                <Item>Item 1</Item>
-                <Item>Item 2</Item>
-                <Item>Item 3</Item>
+                <Item to={ROUTES.TEST}>Test Data</Item>
             </MenuContainer>
         );
     }
