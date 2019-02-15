@@ -1,21 +1,15 @@
 import React, { Component } from "react";
+import { BrowserRouter } from 'react-router-dom';
 
-import CameraContainer from "./containers/camera-container";
-import TestData from "./containers/test-data-container";
-
-import { ROUTES } from "./utils/constants";
+import Router from "./routers";
 
 class App extends Component {
   render() {
-    const { pathname } = window.location;
-    
-    switch(pathname) {
-      case ROUTES.TEST:
-        return (<TestData />);
-      case ROUTES.HOME:
-      default:
-        return (<CameraContainer />);
-    }
+    return (
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    );
   }
 }
 
