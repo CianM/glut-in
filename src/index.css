@@ -1,6 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Pacifico");
+
 :root {
   --color-white: #FFFFFF;
   --color-sea-buckthorn: #F9B129;
+
+  --font-family-title: "Pacifico", cursive;
+  --font-family-main: "Open Sans", sans-serif;
 
   --z-index-capture-button: 1;
   --z-index-menu-button: 1;
@@ -13,11 +18,7 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family-main) !important;
 }
 
 code {
