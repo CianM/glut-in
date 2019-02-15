@@ -6,7 +6,7 @@ import Router from "./routers";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Router />
       </BrowserRouter>
     );
