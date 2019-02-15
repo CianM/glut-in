@@ -1,8 +1,9 @@
-import Tesseract from 'tesseract.js'
+import Tesseract from 'tesseract.js';
+
+import blacklist from "../data/gluten-blacklist.json";
 
 class RecognitionService {
 
-	_job;
 	_tesseract;
 
 	constructor() {
@@ -10,7 +11,17 @@ class RecognitionService {
 	}
 
 	startDetection(image) {
-		this._job = this._tesseract.recognize(image);
+		return this._tesseract.recognize(image);
+	}
+
+	detect(labelText) {
+		const text = labelText.toLowerCase();
+		const { terms } = blacklist;
+		
+		const inText = term => text.includes(term);
+		const checkTextForTerms = (resolve, reject) => terms.some(inText) ? resolve() : reject();
+		
+		return new Promise(checkTextForTerms);
 	}
 
 	_configureLibrary = () => {
@@ -18,11 +29,14 @@ class RecognitionService {
 		this._tesseract = Tesseract.create(config);
 	}
 
-	_getConfig = () => ({
-		workerPath: `${window.location.origin}/tesseract/worker.js`,
-		langPath: `${window.location.origin}/tesseract/lang/`,
-		corePath: `${window.location.origin}/tesseract/core.js`,
-	});
+	_getConfig = () => {
+		const path = `${window.location.origin}${process.env.PUBLIC_URL}`;
+		return {
+			workerPath: `${path}/tesseract/worker.js`,
+			langPath: `${path}/tesseract/lang/`,
+			corePath: `${path}/tesseract/core.js`,
+		}
+	};
 
 }
 
