@@ -1,11 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
 import Container from "../components/container";
+import Spinner from "../components/spinner";
 
 import { recognitionService } from "../services/recognition.service";
+
+const ProgressSpinner = styled(Spinner)`
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+`;
 
 const ResultBackground = styled(Container)`
     background-image: ${({ background }) => `url(${background})`};
@@ -18,22 +25,12 @@ ResultBackground.propTypes = {
     background: PropTypes.string.isRequired
 };
 
-const Progress = styled.span`
-    color: var(--color-white);
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    font-size: 3rem;
-    z-index: 3;
-`;
-
 class ResultsContainer extends Component {
 
     recognitionJob;
 
     state = {
-        inProgress: false,
-        progress: 0
+        inProgress: false
     };
 
     componentDidMount() {
@@ -54,17 +51,18 @@ class ResultsContainer extends Component {
     }
 
     onJobComplete = result => {
-        this.setState({ inProgress: false, progress: 0 });
+        this.setState({ inProgress: false });
     }
 
     render() {
         const { location: { state: { image } } } = this.props;
-        const { inProgress, progress } = this.state; 
+        const { inProgress } = this.state; 
 
         return (
-            <ResultBackground background={image}>
-                { inProgress && (<Progress>{progress}</Progress>) }
-            </ResultBackground>
+            <Fragment>
+                <ResultBackground background={image} />
+                { inProgress && (<ProgressSpinner />) }
+            </Fragment>
         );
     }
 }
