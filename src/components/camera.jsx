@@ -36,7 +36,7 @@ class Camera extends Component {
     }
 
     setupCamera = () => {
-        const constraints = { video: { facingMode: "environment" } };
+        const constraints = { video: { facingMode: { exact: "environment" } } };
         const saveStream = stream => this.stream = stream;
         const setVideoSource = () => {
             this.videoRef.current.srcObject = this.stream;
