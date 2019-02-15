@@ -1,0 +1,18 @@
+{
+    "blacklist": [
+        "barley",
+        "brewer’s yeast",
+        "durum",
+        "emmer",
+        "farina",
+        "farro",
+        "graham",
+        "malt",
+        "rye",
+        "semolina",
+        "spelt",
+        "triticale",
+        "wheat",
+        "wheatberries"
+    ]
+}
