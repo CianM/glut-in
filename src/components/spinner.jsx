@@ -11,8 +11,8 @@ const spin = keyframes`
 `;
 
 const Spinner = styled.div`
-	border: 0.75rem solid #f3f3f3; /* Light grey */
-	border-top: 0.75rem solid #3498db; /* Blue */
+	border: 0.75rem solid #E0E0E0; 
+	border-top: 0.75rem solid var(--color-sea-buckthorn);
 	border-radius: 50%;
 	width: 3rem;
 	height: 3rem;

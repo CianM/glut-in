@@ -21,6 +21,13 @@ const ResultBackground = styled(Container)`
 	filter: grayscale(100%);
 `;
 
+const ResultText = styled.h1`
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    color: blue;
+`;
+
 ResultBackground.propTypes = {
     background: PropTypes.string.isRequired
 };
@@ -30,7 +37,9 @@ class ResultsContainer extends Component {
     recognitionJob;
 
     state = {
-        inProgress: false
+        inProgress: false,
+        completed: false,
+        detected: null
     };
 
     componentDidMount() {
@@ -47,21 +56,38 @@ class ResultsContainer extends Component {
     }
 
     onProgressUpdate = progress => {
-        this.setState({ inProgress: true });
+        const updateProgress = ({ inProgress: prevInProgress }) => !prevInProgress ? ({ inProgress: true }) : null;
+        this.setState(updateProgress);
     }
 
     onJobComplete = result => {
         this.setState({ inProgress: false });
+
+        const detectionJob = recognitionService.detect(result.text);
+        detectionJob.then(this.detectedHandler, this.notDetectedHandler);
+    }
+
+    detectedHandler = () => {
+        this.setState({ completed: true, detected: true });
+    }
+
+    notDetectedHandler = () => {
+        this.setState({ completed: true, detected: false });
     }
 
     render() {
         const { location: { state: { image } } } = this.props;
-        const { inProgress } = this.state; 
+        const { inProgress, completed, detected } = this.state; 
 
         return (
             <Fragment>
                 <ResultBackground background={image} />
                 { inProgress && (<ProgressSpinner />) }
+                { 
+                    completed && (
+                        <ResultText>{detected ? "Contains Gluten" : "Gluten-Free"}</ResultText>
+                    ) 
+                }
             </Fragment>
         );
     }

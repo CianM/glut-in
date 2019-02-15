@@ -1,4 +1,6 @@
-import Tesseract from 'tesseract.js'
+import Tesseract from 'tesseract.js';
+
+import blacklist from "../data/gluten-blacklist.json";
 
 class RecognitionService {
 
@@ -10,6 +12,16 @@ class RecognitionService {
 
 	startDetection(image) {
 		return this._tesseract.recognize(image);
+	}
+
+	detect(labelText) {
+		const text = labelText.toLowerCase();
+		const { terms } = blacklist;
+
+		const inText = term => text.includes(term);
+		const checkTextForTerms = (resolve, reject) => terms.some(inText) ? resolve() : reject();
+		
+		return new Promise(checkTextForTerms);
 	}
 
 	_configureLibrary = () => {
