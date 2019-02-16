@@ -1,14 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
-const spin = keyframes`
-	0% { 
-		transform: rotate(0deg); 
-	}
-
-	100% { 
-		transform: rotate(360deg); 
-	}
-`;
+import { spin } from "../styles/keyframes";
 
 const Spinner = styled.div`
 	border: 0.75rem solid #E0E0E0; 
