@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Pacifico");
 
+/* Names from http://chir.ag/projects/name-that-color/ */
 :root {
+  --color-alabaster: #FCFCFC;
+  --color-mine-shaft: #212121;
   --color-white: #FFFFFF;
   --color-sea-buckthorn: #F9B129;
 
