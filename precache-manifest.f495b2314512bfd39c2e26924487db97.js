@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/glut-in/static/media/logo.238f9059.png"
   },
   {
-    "revision": "5e645a260aebac12b6eb",
+    "revision": "f1a94ff1762bf29eb966",
     "url": "/glut-in/static/css/main.7f24fb00.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/glut-in/static/media/hamburger.efabf306.svg"
   },
   {
-    "revision": "5e645a260aebac12b6eb",
-    "url": "/glut-in/static/js/main.5e645a26.chunk.js"
+    "revision": "f1a94ff1762bf29eb966",
+    "url": "/glut-in/static/js/main.f1a94ff1.chunk.js"
   },
   {
     "revision": "66f26d62a84d13bfde64cac154a93c24",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "/glut-in/static/media/label-gluten-free-2.863a2528.jpg"
   },
   {
-    "revision": "80551a82f971a3421d007cd16bcfbec0",
+    "revision": "bf80ec6152c7bdb1b2bff466a7d82465",
     "url": "/glut-in/index.html"
   }
 ];
