@@ -3,9 +3,13 @@
 /* Names from http://chir.ag/projects/name-that-color/ */
 :root {
   --color-alabaster: #FCFCFC;
+  --color-bright-red: #A10702;
   --color-mine-shaft: #212121;
+  --color-mulberry-wood: #550527;
+  --color-olive-drab: #688E26;
   --color-white: #FFFFFF;
   --color-sea-buckthorn: #F9B129;
+  --color-trinidad: #F44708;
 
   --font-family-title: "Pacifico", cursive;
   --font-family-main: "Open Sans", sans-serif;

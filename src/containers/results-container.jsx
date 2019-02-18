@@ -8,6 +8,9 @@ import Spinner from "../components/spinner";
 
 import { recognitionService } from "../services/recognition.service";
 
+import DetectedIcon from "../images/detected-logo.png";
+import NotDetectedIcon from "../images/not-detected-logo.png";
+
 const ProgressSpinner = styled(Spinner)`
     position: fixed;
     top: 1rem;
@@ -21,15 +24,37 @@ const ResultBackground = styled(Container)`
 	filter: grayscale(100%);
 `;
 
-const ResultText = styled.h1`
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    color: blue;
-`;
-
 ResultBackground.propTypes = {
     background: PropTypes.string.isRequired
+};
+
+const Result = styled.div`
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+`;
+
+Result.Icon = styled.img`
+    height: 30vh;
+    width: 30vh;
+    border-radius: 50%;
+    box-shadow: 0 5px 2rem var(--color-alabaster);
+`;
+
+Result.Text = styled.h1`
+    color: ${({ detected }) => detected ? "var(--color-bright-red)" : " var(--color-olive-drab)"};
+    font-size: 2.5rem;
+    font-family: var(--font-family-title);
+    font-weight: lighter;
+`;
+
+Result.Text.propTypes = {
+    detected: PropTypes.bool.isRequired
 };
 
 class ResultsContainer extends Component {
@@ -85,7 +110,10 @@ class ResultsContainer extends Component {
                 { inProgress && (<ProgressSpinner />) }
                 { 
                     completed && (
-                        <ResultText>{detected ? "Contains Gluten" : "Gluten-Free"}</ResultText>
+                        <Result>
+                            <Result.Icon src={detected ? DetectedIcon : NotDetectedIcon} />
+                            <Result.Text detected={detected}>{detected ? "Contains Gluten" : "Gluten-Free"}</Result.Text>
+                        </Result>
                     ) 
                 }
             </Fragment>
