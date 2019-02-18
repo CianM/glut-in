@@ -25,8 +25,20 @@ class RecognitionService {
 	}
 
 	_configureLibrary = () => {
-		const config = this._getConfig();
-		this._tesseract = Tesseract.create(config);
+		switch(process.env.NODE_ENV) {
+			case "production": {
+				this._tesseract = Tesseract;
+				break;
+			}
+
+			case "development":
+			default: {
+				const config = this._getConfig();
+				this._tesseract = Tesseract.create(config);
+				break;
+			}
+
+		}
 	}
 
 	_getConfig = () => {
