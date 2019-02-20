@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "238f90597667e12ff2d1886c6f60485f",
-    "url": "/glut-in/static/media/logo.238f9059.png"
+    "revision": "c59074f551e8a518156cb12051529e0b",
+    "url": "/glut-in/static/media/not-detected-logo.c59074f5.png"
   },
   {
-    "revision": "f1a94ff1762bf29eb966",
-    "url": "/glut-in/static/css/main.7f24fb00.chunk.css"
+    "revision": "d1d7a412d4e6ba21f017",
+    "url": "/glut-in/static/css/main.94122825.chunk.css"
   },
   {
-    "revision": "0890168613bafbf9a3b1",
-    "url": "/glut-in/static/js/1.08901686.chunk.js"
+    "revision": "b64c0309168851b1a6ea",
+    "url": "/glut-in/static/js/1.b64c0309.chunk.js"
   },
   {
     "revision": "701c805d5c777644fa75",
@@ -24,8 +24,16 @@ self.__precacheManifest = [
     "url": "/glut-in/static/media/hamburger.efabf306.svg"
   },
   {
-    "revision": "f1a94ff1762bf29eb966",
-    "url": "/glut-in/static/js/main.f1a94ff1.chunk.js"
+    "revision": "44cfcd7b992105e847d7c71c4ef22430",
+    "url": "/glut-in/static/media/detected-logo.44cfcd7b.png"
+  },
+  {
+    "revision": "d1d7a412d4e6ba21f017",
+    "url": "/glut-in/static/js/main.d1d7a412.chunk.js"
+  },
+  {
+    "revision": "ee8704209f0cafbd641a27bedda73cc5",
+    "url": "/glut-in/static/media/logo.ee870420.png"
   },
   {
     "revision": "66f26d62a84d13bfde64cac154a93c24",
@@ -44,7 +52,7 @@ self.__precacheManifest = [
     "url": "/glut-in/static/media/label-gluten-free-2.863a2528.jpg"
   },
   {
-    "revision": "bf80ec6152c7bdb1b2bff466a7d82465",
+    "revision": "8f519863b40d34486c39ce9fe781b6b2",
     "url": "/glut-in/index.html"
   }
 ];
