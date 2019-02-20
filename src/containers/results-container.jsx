@@ -47,10 +47,11 @@ Result.Icon = styled.img`
 `;
 
 Result.Text = styled.h1`
-    color: ${({ detected }) => detected ? "var(--color-bright-red)" : " var(--color-olive-drab)"};
+    color: var(--color-alabaster);
     font-size: 2.5rem;
     font-family: var(--font-family-title);
     font-weight: lighter;
+    text-shadow: ${({ detected }) => detected ? "5px 5px 0.25rem var(--color-bright-red)" : "5px 5px 0.25rem var(--color-olive-drab)"};
 `;
 
 Result.Text.propTypes = {
