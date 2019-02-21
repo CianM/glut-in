@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
 
 import { glutenImageData, glutenFreeImageData } from "../images/test-data";
 
 import { ROUTES } from "../utils/constants";
+import { AppContext } from "../utils/context";
 
 const Container = styled.div`
     padding: 1rem;
@@ -31,12 +30,13 @@ const Item = styled.img`
 
 class TestData extends Component {
 
-    // TODO: Convert to Link component
-    sendDataForTest = image => {
-        const { history: { push } } = this.props;
-        const data = { image };
+    static contextType = AppContext;
 
-        push(ROUTES.RESULTS, data);
+    sendDataForTest = image => {
+        const { setImageData, setScreen } = this.context;
+
+        setImageData(image);
+        setScreen(ROUTES.RESULTS);
     }
 
     render() {
@@ -67,10 +67,4 @@ class TestData extends Component {
     }
 }
 
-TestData.propTypes = {
-    history: PropTypes.shape({
-        push: PropTypes.func
-    })
-};
-
-export default withRouter(TestData);
+export default TestData;

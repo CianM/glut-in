@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
 
 import Container from "../components/container";
 import Spinner from "../components/spinner";
@@ -10,6 +9,8 @@ import { recognitionService } from "../services/recognition.service";
 
 import DetectedIcon from "../images/detected-logo.png";
 import NotDetectedIcon from "../images/not-detected-logo.png";
+
+import { AppContext } from "../utils/context";
 
 const ProgressSpinner = styled(Spinner)`
     position: fixed;
@@ -60,6 +61,8 @@ Result.Text.propTypes = {
 
 class ResultsContainer extends Component {
 
+    static contextType = AppContext;
+
     recognitionJob;
 
     state = {
@@ -73,7 +76,7 @@ class ResultsContainer extends Component {
     }
 
     startDetection() {
-        const { location: { state: { image } } } = this.props;
+        const { imageData: image } = this.context;
         
         this.recognitionJob = recognitionService.startDetection(image);
         
@@ -102,7 +105,7 @@ class ResultsContainer extends Component {
     }
 
     render() {
-        const { location: { state: { image } } } = this.props;
+        const { imageData: image } = this.context;
         const { inProgress, completed, detected } = this.state; 
 
         return (
@@ -122,12 +125,4 @@ class ResultsContainer extends Component {
     }
 }
 
-ResultsContainer.propTypes = {
-    location: PropTypes.shape({
-		state: PropTypes.shape({
-			image: PropTypes.string
-		})
-	})
-};
-
-export default withRouter(ResultsContainer);
+export default ResultsContainer;
