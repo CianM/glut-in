@@ -5,7 +5,7 @@ import Camera from "../components/camera";
 import Container from "../components/container";
 import Menu from "../components/menu";
 
-import HamburgerIcon from "../images/hamburger.svg";
+import HamburgerIcon from "../images/hamburger.png";
 
 const HamburgerButton = styled.img`
     color: var(--color-white);
