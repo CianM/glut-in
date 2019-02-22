@@ -4,6 +4,8 @@ import styled from "styled-components";
 import CaptureButton from "./capture-button";
 import Container from "./container";
 
+import CameraButtonIcon from "../images/camera-button.png";
+
 import { ROUTES } from "../utils/constants";
 import { AppContext } from "../utils/context";
 
@@ -77,7 +79,7 @@ class Camera extends Component {
     render() {
        return (
            <Container>
-               <CaptureButton onClick={this.takePhoto}>Take Photo</CaptureButton>
+               <CaptureButton src={CameraButtonIcon} alt="Take Photo" onClick={this.takePhoto} />
                <Video ref={this.videoRef}></Video>
                <Canvas ref={this.canvasRef}></Canvas>
            </Container>  
