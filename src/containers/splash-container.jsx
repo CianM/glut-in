@@ -29,7 +29,7 @@ const Title = styled.h1`
 	color: var(--color-alabaster);
 	font-size: 4rem;
 	font-family: var(--font-family-title);
-	text-shadow: 1px 2px 0.5rem #414141;
+	text-shadow: 1px 2px 0.5rem var(--color-tundora);
 	animation: ${bounce} 1s linear;
 `;
 

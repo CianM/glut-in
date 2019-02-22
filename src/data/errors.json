@@ -1,0 +1,7 @@
+{
+	"camera": {
+		"NotAllowedError": "You must grant camera access to use this application",
+		"OverconstrainedError": "Your device does not meet the requirements or camera permission has not been given",
+		"TypeError": "App has been misconfigured"
+	}
+}
