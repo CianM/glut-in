@@ -9,17 +9,21 @@ import { ROUTES } from "../utils/constants";
 import { AppContext } from "../utils/context";
 
 const MenuContainer = styled.div`
-    display: ${({ visible }) => visible ? "flex" : "none"};
+    display: flex;
     flex-flow: column nowrap;
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 0;
-    background-color: var(--color-white);
-    padding: 1rem;
+    background-color: var(--color-alabaster);
+    padding: 1rem 0;
     height: 100%;
-    width: 60%;
+    width: ${({ visible }) => visible ? "60%" : "0" };
+    visibility: ${({ visible }) => visible ? "visible" : "hidden"};
+    overflow-x: hidden;
+    transition: 0.5s;
     z-index: var(--z-index-menu);
+    white-space: nowrap;
+    box-shadow: 0 0 5rem 0.5rem var(--color-mine-shaft);
 `;
 
 MenuContainer.propTypes = {
@@ -34,6 +38,7 @@ const Header = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding: 0 1rem;
 `;
 
 Header.CloseButton = styled.img`
@@ -44,6 +49,7 @@ Header.CloseButton = styled.img`
 const Item = styled.p`
     display: flex;
     align-items: center;
+    padding: 0 1rem;
     height: 3rem;
     cursor: pointer;
 `;
