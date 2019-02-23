@@ -12,3 +12,9 @@ export const INITIAL_APP_STATE = Object.freeze({
     setImageData: () => {},
     setScreen: () => {}
 });
+
+export const ENVIRONMENTS = Object.freeze({
+    DEV: "development",
+    PROD: "production"
+});
+

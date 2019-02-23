@@ -2,7 +2,7 @@
   "name": "glut-in",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cianm.github.io/glut-in",
+  "homepage": ".",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "prop-types": "^15.6.2",
