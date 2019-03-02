@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
+import BackButton from "./back-button";
+
 import { withAppContext } from "../hoc/withAppContext";
 
-import BackArrow from "../images/back.png";
-
 import { ROUTES } from "../utils/constants";
+
+import BackArrowDark from "../images/back-arrow-dark.png";
 
 const Header = styled.div`
     display: flex;
@@ -16,14 +18,9 @@ const Header = styled.div`
     box-shadow: 0 0rem 2rem -0.5rem var(--color-mine-shaft);
 `;
 
-const Back = styled.img`
-    height: 1rem;
-    width: 1rem;
-`;
-
 const PageBackHeader = ({ context: { setScreen } }) => (
     <Header>
-        <Back src={BackArrow} alt="Back" onClick={() => setScreen(ROUTES.HOME)} />
+        <BackButton src={BackArrowDark} onClick={() => setScreen(ROUTES.HOME)} />
     </Header>
 );
 

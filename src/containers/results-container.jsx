@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+import BackButton from "../components/back-button";
 import Container from "../components/container";
 import Spinner from "../components/spinner";
 
@@ -10,12 +11,22 @@ import { recognitionService } from "../services/recognition.service";
 import DetectedIcon from "../images/detected-logo.png";
 import NotDetectedIcon from "../images/not-detected-logo.png";
 
+import { ROUTES } from "../utils/constants";
 import { AppContext } from "../utils/context";
+
+const CameraBackButton = styled(BackButton)`
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    color: var(--color-white);
+    height: 1.5rem;
+    width: 1.5rem;
+`;
 
 const ProgressSpinner = styled(Spinner)`
     position: fixed;
     top: 1rem;
-    left: 1rem;
+    right: 1rem;
 `;
 
 const ResultBackground = styled(Container)`
@@ -104,6 +115,8 @@ class ResultsContainer extends Component {
         this.setState({ completed: true, detected: false });
     }
 
+    navigateToHomeScreen = () => this.context.setScreen(ROUTES.HOME);
+
     render() {
         const { imageData: image } = this.context;
         const { inProgress, completed, detected } = this.state; 
@@ -111,6 +124,7 @@ class ResultsContainer extends Component {
         return (
             <Fragment>
                 <ResultBackground background={image} />
+                <CameraBackButton onClick={this.navigateToHomeScreen} />
                 { inProgress && (<ProgressSpinner />) }
                 { 
                     completed && (
