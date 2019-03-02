@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+import PageBackButton from "../components/page-back-header";
+
 import { glutenImageData, glutenFreeImageData } from "../images/test-data";
 
 import { ROUTES } from "../utils/constants";
@@ -42,6 +44,7 @@ class TestData extends Component {
     render() {
         return (
             <Container>
+                <PageBackButton />
                 <Title>Gluten</Title>
                 <ItemContainer>
                     { 
