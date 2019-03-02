@@ -4,16 +4,16 @@ self.__precacheManifest = [
     "url": "./static/media/not-detected-logo.c59074f5.png"
   },
   {
-    "revision": "63950683428f324f8e9f",
-    "url": "./static/css/main.73caad8e.chunk.css"
+    "revision": "97f7d482f566b45509f3",
+    "url": "./static/css/main.dbce8554.chunk.css"
   },
   {
-    "revision": "9eb600ee07a27cdad64f",
-    "url": "./static/js/runtime~main.9eb600ee.js"
+    "revision": "217ff2cba60f32f61f59",
+    "url": "./static/js/1.217ff2cb.chunk.js"
   },
   {
-    "revision": "d0e6629b0376aab68c34",
-    "url": "./static/js/2.d0e6629b.chunk.js"
+    "revision": "4a686d48d5a089750c49",
+    "url": "./static/js/runtime~main.4a686d48.js"
   },
   {
     "revision": "bae7d1a0d7c89217670741b39e62e9ad",
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "./static/media/detected-logo.44cfcd7b.png"
   },
   {
-    "revision": "63950683428f324f8e9f",
-    "url": "./static/js/main.63950683.chunk.js"
+    "revision": "97f7d482f566b45509f3",
+    "url": "./static/js/main.97f7d482.chunk.js"
   },
   {
     "revision": "ee8704209f0cafbd641a27bedda73cc5",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "./static/media/label-gluten-free-2.863a2528.jpg"
   },
   {
-    "revision": "93292328a0a7cfc03a168b732675a0a2",
+    "revision": "ffbeef92642d44654948e9d51196034c",
     "url": "./index.html"
   }
 ];
