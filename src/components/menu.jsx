@@ -58,9 +58,36 @@ class Menu extends Component {
 
     static contextType = AppContext;
 
+    prompt = null;
+
     handleClickOutside = () => this.props.closeFn();
 
     navigateToTestPage = () => this.context.setScreen(ROUTES.TEST);
+
+    downloadPWA = () => {
+        const openPrompt = e => {
+            e.preventDefault();
+
+            this.prompt = e;
+            this.prompt.prompt();
+
+            this.prompt.userChoice.then(this.savePWAPromptChoice);
+        };
+
+        window.addEventListener("beforeinstallprompt", openPrompt);
+    }
+
+    savePWAPromptChoice = choiceResult => {
+        console.log({ choiceResult })
+        if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the A2HS prompt");
+        } 
+        else {
+            console.log("User dismissed the A2HS prompt");
+        }
+          
+        this.prompt = null;
+    }
 
     render() {
         const { closeFn, open } = this.props;
@@ -71,6 +98,7 @@ class Menu extends Component {
                     <Header.CloseButton src={CloseIcon} alt="Close" onClick={closeFn} />
                 </Header>
                 <Item onClick={this.navigateToTestPage}>Test Data</Item>
+                <Item onClick={this.downloadPWA}>Save for Offline</Item>
             </MenuContainer>
         );
     }

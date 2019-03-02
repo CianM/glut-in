@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Camera from "../components/camera";
 import Container from "../components/container";
 import Menu from "../components/menu";
-import InstallPWA from "../components/install-pwa";
 
 import HamburgerIcon from "../images/hamburger.png";
 
@@ -38,7 +37,6 @@ class CameraContainer extends Component {
                     ) 
                 }
                 <Menu open={menuOpen} closeFn={this.closeMenu}/>
-                <InstallPWA />
             </Container>
         );
     }
